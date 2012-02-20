@@ -1,7 +1,7 @@
 /**
  * @filename Ex.plugin.Pinchemu.js
  *
- * @name Pinch emulator for Sencha Touch
+ * @name Pinch emulator plugin for Sencha Touch
  * @fileOverview Emulation of double touch pinch event for desktops
  *
  * @author Constantine V. Smirnov kostysh(at)gmail.com
