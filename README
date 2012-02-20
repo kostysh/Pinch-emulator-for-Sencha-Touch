@@ -1,6 +1,9 @@
-Pinch emulator for Sencha Touch 2.0
+Pinch emulator plugin for Sencha Touch 2.0 (Emulation of double touch pinch event for desktops.)
 
-Emulation of double touch pinch event for desktops.
+Just add this plugin to configuration of components on which you want to test the pinch.
+Usage: CRTL + mouse TouchMove for zoom-in and SHIFT + mouse TouchMove for zoom-out
 
 version 0.1: 
-First touch
+First double touch
+
+
