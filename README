@@ -4,6 +4,9 @@ Just add this plugin to configuration of components on which you want to test th
 
 Usage: CRTL + mouse TouchMove for zoom-in and SHIFT + mouse TouchMove for zoom-out
 
+version 0.2: 
++ touches visualization helpers
+
 version 0.1: 
 First double touch
 

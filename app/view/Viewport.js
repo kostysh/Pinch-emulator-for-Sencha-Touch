@@ -17,7 +17,8 @@ Ext.define('Test.view.Viewport', {
                 centered: true,
                 plugins: [
                     {
-                        xclass: 'Ext.plugin.Pinchemu'
+                        xclass: 'Ext.plugin.Pinchemu',
+                        helpers: true
                     }
                 ],
                 html: '<h2>Try pinch on me</h2> <div><strong>CRTL+ mouse TouchMove</strong> for zoom in,</div><div>and <strong>SHIFT+ mouse TouchMove</strong> for zoom out</div>'

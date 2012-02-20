@@ -6,7 +6,7 @@
  *
  * @author Constantine V. Smirnov kostysh(at)gmail.com
  * @date 20120220
- * @version 0.1
+ * @version 0.2
  * @license Free
  *
  * @requires Sencha Touch 2.0
@@ -20,7 +20,8 @@
                 id: 'mypinchitem',
                 plugins: [
                     {
-                        xclass: 'Ext.plugin.Pinchemu'
+                        xclass: 'Ext.plugin.Pinchemu',
+                        helpers: true//enable touches visualization
                     }
                 ]
             }
@@ -30,10 +31,38 @@
  */
 
 Ext.define('Ext.plugin.Pinchemu', {
+    extend: 'Ext.Component',
     alias: 'plugin.pinchemu',
+    
+    config: {
+        helpers: true
+    },
   
     init: function(cmp) {
         var self = this;
+        
+        self.touchHelpers = [];
+        
+        self.touchHelpers[0] = Ext.create('Ext.Button', {
+            top: 0,
+            left: 0,
+            style: 'opacity: 0.6;',
+            iconMask: true,
+            round: true,
+            hidden: true
+        });
+        
+        self.touchHelpers[1] = Ext.create('Ext.Button', {
+            top: 0,
+            left: 0,
+            style: 'opacity: 0.6;',
+            iconMask: true,
+            round: true,
+            hidden: true
+        });
+        
+        Ext.Viewport.add(self.touchHelpers[0]);
+        Ext.Viewport.add(self.touchHelpers[1]);
         
         self.cmp = cmp;
         self.cmp.on({
@@ -113,6 +142,38 @@ Ext.define('Ext.plugin.Pinchemu', {
         });
         
         item.pinchSimEnabled = true;
+    },
+    
+    showHelpers: function(ev) {
+        var touches = ev.touches;
+        if (typeof touches === 'object' && this.getHelpers()) {
+            this.moveHelpers(touches);
+            this.setHelpersArrows(ev);
+            this.touchHelpers[0].show();
+            this.touchHelpers[1].show();
+        }
+    },
+    
+    setHelpersArrows: function(ev) {
+        if (ev.event.ctrlKey) {
+            this.touchHelpers[0].setIconCls('arrow_right');
+            this.touchHelpers[1].setIconCls('arrow_left');
+        } else {
+            this.touchHelpers[0].setIconCls('arrow_left');
+            this.touchHelpers[1].setIconCls('arrow_right');
+        }        
+    },
+    
+    moveHelpers: function(touches) {
+        this.touchHelpers[0].setTop(touches[0].point.y);
+        this.touchHelpers[0].setLeft(touches[0].point.x);
+        this.touchHelpers[1].setTop(touches[1].point.y);
+        this.touchHelpers[1].setLeft(touches[1].point.x);
+    },
+    
+    hideHelpers: function() {
+        this.touchHelpers[0].hide();
+        this.touchHelpers[1].hide();
     },
     
     //Converting of single touch event to double touch
@@ -204,15 +265,18 @@ Ext.define('Ext.plugin.Pinchemu', {
     onTouchStart: function() {
         this.lastScale = 1;
         var ev = this.convertEvent(arguments[1]);
+        this.showHelpers(ev);
     },
     
     onTouchMove: function() {
         var ev = this.convertEvent(arguments[1]);
         this.lastTouches = Array.prototype.slice.call(ev.touches);
+        this.moveHelpers(ev.touches);
     },
     
     onTouchEnd: function() {
         var ev = this.convertEvent(arguments[1]);
+        this.hideHelpers();
         this.touchStartPoint = null;
         this.lastTouches = null;
         this.lastScale = null;
