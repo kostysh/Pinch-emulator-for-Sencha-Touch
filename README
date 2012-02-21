@@ -2,7 +2,9 @@ Pinch emulator plugin for Sencha Touch 2.0 (emulation of double touch pinch even
 
 Just add this plugin to configuration of components on which you want to test the pinch.
 
-Usage: CRTL + mouse TouchMove for zoom-in and SHIFT + mouse TouchMove for zoom-out
+Usage: 
+- Place your ST2 build in touch/ folder
+- CRTL + mouse TouchMove for zoom-in and SHIFT + mouse TouchMove for zoom-out
 
 version 0.2: 
 + touches visualization helpers
