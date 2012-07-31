@@ -47,7 +47,6 @@ Install:
 
 Usage: 
 ======
-- Place your ST2 build in touch/ folder  
 - CRTL + mouse TouchMove for zoom-in  
 - SHIFT + mouse TouchMove for zoom-out  
 
