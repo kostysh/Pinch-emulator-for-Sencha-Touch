@@ -31,17 +31,19 @@ Install:
 
 <!-- language: lang-js -->
             
-        Ext.Loader.setPath({
-            'Ext.ux': '../src/ux'
-        });
+    Ext.Loader.setPath({
+        'Ext.ux': '../src/ux'
+    });
 
 - Just add this plugin to configuration of components on which you want to test the pinch:
+
+<!-- language: lang-js -->
         
-        plugins: [
-            {
-                xclass: 'Ext.ux.plugin.Pinchemu'
-            }
-        ],
+    plugins: [
+        {
+            xclass: 'Ext.ux.plugin.Pinchemu'
+        }
+    ],
 
 Usage: 
 ======
